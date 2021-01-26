@@ -44,6 +44,17 @@ Contact.prototype.fullName = function() {
 // User Interface Logic ---------
 let addressBook = new AddressBook();
 
+function displayContactDetails(addressBookToDisplay){
+  let contactsList = $("ult#contacts");
+  let htmlforContactInfo="";
+  Object.keys(addressBookToDisplay.contacts).forEach(function(key){
+    const contact = adressBookToDisplay.findContact(key);
+    htmlforContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>"
+  
+  contactsList.html(htmlforContactInfo);
+  }
+)};
+
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
@@ -54,4 +65,5 @@ $(document).ready(function() {
     addressBook.addContact(newContact);
     console.log(addressBook.contacts);
   });
+
 });
